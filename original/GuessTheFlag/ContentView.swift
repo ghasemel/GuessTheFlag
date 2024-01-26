@@ -17,6 +17,19 @@ struct FlagImage: View {
     }
 }
 
+struct Title: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/.bold())
+            .foregroundColor(.white)
+    }
+}
+
+extension View {
+    func titleStyle() -> some   View {
+        modifier(Title())
+    }
+}
 
 struct ContentView: View {
     
@@ -75,8 +88,8 @@ struct ContentView: View {
                 Spacer()
                 
                 Text("Your score is: \(score)")
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/.bold())
-                    .foregroundColor(.white)
+                    .titleStyle()
+                
                 
                 Spacer()
             }.padding()
